@@ -2,14 +2,13 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import MainButton from '../Shared/MainButton';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Loading from '../Shared/Loading';
 
 
-const SignIn = () => {
+const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [signInWithGoogle, gUser, GLoading, gError] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
     const [
         signInWithEmailAndPassword,
@@ -18,7 +17,21 @@ const SignIn = () => {
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
+      let signInError;
+      const navigate = useNavigate();
+      const location = useLocation();
+      let from = location.state?.from?.pathname || "/";
 
+      if (user || gUser ) {
+        navigate(from, { replace: true });
+    }
+      if (loading || gLoading) {
+        return <Loading></Loading>
+    }
+
+    if (error || gError) {
+        signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+    }
 
 
     const onSubmit = data => {
@@ -92,7 +105,8 @@ const SignIn = () => {
                 <div className="divider">OR</div>
 
                 <button onClick={() => signInWithGoogle()} className="btn btn-outline  uppercase text-lg font-normal"> <img className='w-9 mr-2' alt="" />
-                <FontAwesomeIcon icon={['fab', 'google']} />
+         
+             
                 Continue with google</button>
              
 
@@ -106,4 +120,4 @@ const SignIn = () => {
     
 };
 
-export default SignIn;
+export default Login;
