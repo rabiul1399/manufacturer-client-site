@@ -97,7 +97,7 @@ const Login = () => {
                         </label>
                     </div>
 
-                    {/* {signInError} */}
+                    {signInError}
                     <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
                 </form>
                 <p className='text-sm'>New to Parts Gear? <Link to='/signup' className='text-primary'>Create new account</Link></p>
