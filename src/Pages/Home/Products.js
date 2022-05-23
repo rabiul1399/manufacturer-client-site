@@ -5,10 +5,15 @@ import Product from './Product';
 const Products = () => {
     const [parts,setParts] = useState([]);
     useEffect(() =>{
-        fetch('products.json')
+        fetch('http://localhost:5000/product',{
+            method:'GET',
+            headers: {
+                authorization: 'application/json'
+            }
+        })
         .then(res=>res.json())
         .then(data=>setParts(data))
-    },[])
+    },[]);
     return (
         <div>
            <div className='flex justify-between  items-center m-2'>
@@ -18,7 +23,7 @@ const Products = () => {
 
            <div className='grid grid-cols-1 lg:grid-cols-3 mb-6  rounded-lg gap-6 '>
            {
-                parts.slice(0,6).map(part => <Product part={part} key={part.id}> </Product>)
+                parts.slice(0,6).map(part => <Product part={part} key={part.id}></Product>)
             }
 
            </div>
