@@ -9,7 +9,8 @@ import SignUP from "./Pages/Form/SignUP";
 import Home from "./Pages/Home/Home";
 import ProductSumary from "./Pages/Home/ProductSumary";
 import Navbar from "./Pages/Shared/Navbar";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div>
@@ -40,7 +41,7 @@ function App() {
      
       </Routes>
      
-      
+      <ToastContainer />
     </div>
   );
 }

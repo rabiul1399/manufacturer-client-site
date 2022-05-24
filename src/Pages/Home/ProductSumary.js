@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
 
 const ProductSumary = () => {
     const { id } = useParams();
@@ -50,16 +50,14 @@ const ProductSumary = () => {
             body:JSON.stringify(productOverview)
         })
         .then(res=>res.json())
-        .then(data=>{
-    
-            alert("order commplited")
-            console.log(data)
-            // if(data.success){
-            //     toast(`Order is complited`)
-            // }
-            // else{
-            //     toast.error(`Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`)
-            // }
+        .then(data=>{   
+                 
+            if(data.success){
+                toast(`Order is complited`)
+            }
+            else{
+                toast.error(`Already have and appointment on ${data.productOverview?.date}`)
+            }
     
          
         })
