@@ -1,5 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import MyReview from "./Pages/Dashboard/MyReview";
+import Order from "./Pages/Dashboard/Order";
 import Login from "./Pages/Form/Login";
 import RequireAuth from "./Pages/Form/RequireAuth";
 import SignUP from "./Pages/Form/SignUP";
@@ -28,6 +31,9 @@ function App() {
           <Dashboard />
         </RequireAuth>
       }>
+        <Route index element={<MyProfile></MyProfile>} ></Route>
+        <Route path='/order' element={<Order></Order>} ></Route>
+        <Route path='review' element={<MyReview></MyReview>}></Route>
 
       </Route>
    

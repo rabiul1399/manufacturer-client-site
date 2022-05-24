@@ -25,7 +25,7 @@ const ProductSumary = () => {
 
 
             <div className=" min-h-screen bg-base-200 pt-24">
-                <div className='grid grid-cols-1 w-full md:grid-cols-2 '>
+                <div className='grid grid-cols-1 w-full justify-items-center md:grid-cols-2 '>
                     <div className='flex  ' >
                         <img className='mt-9 ml-8 h-60 w-60' src={img} alt="" />
                         <div className="card-body h-60 w-full">
@@ -38,10 +38,19 @@ const ProductSumary = () => {
 
 
                     </div>
-                    <div className="flex justify-end  mr-14">
+                    <div className="flex justify-end  mt-8">
                         <div className="  w-full max-w-sm shadow-2xl bg-base-100">
                             <div className="card-body">
-                                <div className="form-control">
+                            <h2 className="font-semibold">Name:{displayName}</h2>
+                            <h2 className="font-semibold">Email:{email}</h2>
+                            <h2 className="font-semibold">Quantity:{}</h2>
+                            <span class="label-text">Quantity</span>
+                        
+                                    <input type="text" placeholder='quantity' className="input input-bordered" />
+
+                            
+                            
+                                {/* <div className="form-control">
                                     <label class="label">
                                         <span class="label-text">Name</span>
                                     </label>
@@ -77,7 +86,7 @@ const ProductSumary = () => {
                                         <span class="label-text">Phone Number</span>
                                     </label>
                                     <input type="text" placeholder="phone number" className="input input-bordered" />
-                                </div>
+                                </div> */}
                                 <div className="form-control mt-6">
                                     <button className="btn btn-primary">Order</button>
                                 </div>
