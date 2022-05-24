@@ -91,9 +91,9 @@ const Login = () => {
                             })}
                         />
                         <label className="label">
-                            {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
+                        {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
                             {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                            <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
+                           
                         </label>
                     </div>
 

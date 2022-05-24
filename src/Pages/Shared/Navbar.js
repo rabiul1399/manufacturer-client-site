@@ -13,7 +13,6 @@ const Navbar = () => {
     <li><Link to='/'>Home</Link></li>
     
     <li><Link to='/appointment'>Products</Link></li>
-    <li><Link to='/reviews'>Reviews</Link></li>
     <li><Link to='/about'>About</Link></li>
     <li><Link to='/contact'>Contact</Link></li>
    {
@@ -41,6 +40,12 @@ const Navbar = () => {
           <a href='/' className="btn btn-ghost normal-case text-xl">Parts Gear</a>
         </div>
 
+        <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal mr-14 p-0">
+      <li><a>Blogs</a></li>
+    
+    </ul>
+  </div>
         <div className="navbar-end   mr-6">
 
       

@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { useForm } from "react-hook-form";
 
 const ProductSumary = () => {
     const { id } = useParams();
     const [user] = useAuthState(auth);
-    const { displayName, email } = user;
     const [product, setProduct] = useState({});
+    const inputRef = useRef();
 
     const { _id, name, price, description, img, quantity, minOrder } = product;
-    console.log(name)
+
 
     useEffect(() => {
         const uri = `http://localhost:5000/product/${id}`;
@@ -19,6 +20,54 @@ const ProductSumary = () => {
             .then(data => setProduct(data))
 
     }, [])
+
+
+
+
+    const handleBooking = event => {
+        event.preventDefault();
+        const number= event.target.phone.value
+        const orderQuantity= event.target.quantity.value
+        
+        const productOverview = {
+            id: _id,
+            productName: name,
+            price,
+            userEmail: user.email,
+            userName: user.displayName,
+            phone: number,
+            orderQuantity: orderQuantity
+
+        }
+        
+
+        
+        fetch('http://localhost:5000/order',{
+            method:'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body:JSON.stringify(productOverview)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+    
+            alert("order commplited")
+            console.log(data)
+            // if(data.success){
+            //     toast(`Order is complited`)
+            // }
+            // else{
+            //     toast.error(`Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`)
+            // }
+    
+         
+        })
+
+        
+
+    }
+
 
     return (
         <div>
@@ -38,64 +87,42 @@ const ProductSumary = () => {
 
 
                     </div>
-                    <div className="flex justify-end  mt-8">
-                        <div className="  w-full max-w-sm shadow-2xl bg-base-100">
-                            <div className="card-body">
-                            <h2 className="font-semibold">Name:{displayName}</h2>
-                            <h2 className="font-semibold">Email:{email}</h2>
-                            <h2 className="font-semibold">Quantity:{}</h2>
-                            <span class="label-text">Quantity</span>
-                        
-                                    <input type="text" placeholder='quantity' className="input input-bordered" />
+                    <div className='card-body'>
 
-                            
-                            
-                                {/* <div className="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Name</span>
-                                    </label>
-                                    <input type="text" value={displayName} className="input input-bordered" readOnly />
-                                </div>
-                                <div className="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Email</span>
-                                    </label>
-                                    <input type="text" value={email} className="input input-bordered" readOnly />
-                                </div>
-                              
-                                <div className="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Product Name</span>
-                                    </label>
-                                    <input type="text" value={name} className="input input-bordered" />
-                                </div>
-                                <div className="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Quantity</span>
-                                    </label>
-                                    <input type="text" placeholder='quantity' className="input input-bordered" />
-                                </div>
-                                <div className="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Address</span>
-                                    </label>
-                                    <input type="text" placeholder='address' className="input input-bordered" />
-                                </div>
-                                <div className="form-control">
-                                    <label class="label">
-                                        <span class="label-text">Phone Number</span>
-                                    </label>
-                                    <input type="text" placeholder="phone number" className="input input-bordered" />
-                                </div> */}
-                                <div className="form-control mt-6">
-                                    <button className="btn btn-primary">Order</button>
-                                </div>
+
+                        <form onSubmit={handleBooking} className='w-full mt-2'>
+
+                            <div className="form-control">
+                                <input type="text" name="name" value={user?.displayName || ''} className=" border-2 input input-bordered   w-full " readOnly />
                             </div>
-                        </div>
+
+                            <div className="form-control">
+                                <input type="email" name='email' value={user?.email || ''} className=" border-2 input input-bordered  w-full my-1 " readOnly />
+                            </div>
+
+                            <div className="form-control ">
+                                <input type="text" name="phone" placeholder="phone" className=" border-2 input input-bordered   w-full "  />
+                            </div>
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text">Product-Name</span>
+                                </label>
+                                <input type="text" name='name' value={name} class="input input-bordered"  readOnly/>
+                            </div>
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text">Order-Quantity</span>
+                                </label>
+                                <input type="text" name='quantity' placeholder="quantity" class="input input-bordered" />
+                            </div>
+                            <input type="submit" className='btn btn-secondary w-full my-2' value='Submit' />
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
+
 
 
     );
