@@ -8,14 +8,14 @@ const ProductSumary = () => {
     const { id } = useParams();
     const [user] = useAuthState(auth);
     const [product, setProduct] = useState({});
-    const inputRef = useRef();
+
 
     const { _id, name, price, description, img, quantity, minOrder } = product;
 
 
     useEffect(() => {
-        const uri = `http://localhost:5000/product/${id}`;
-        fetch(uri)
+        const url = `http://localhost:5000/product/${id}`;
+        fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
 
@@ -33,14 +33,13 @@ const ProductSumary = () => {
             id: _id,
             productName: name,
             price,
-            userEmail: user.email,
+            user: user.email,
             userName: user.displayName,
             phone: number,
             orderQuantity: orderQuantity
 
         }
-        
-
+   
         
         fetch('http://localhost:5000/order',{
             method:'POST',
@@ -66,6 +65,23 @@ const ProductSumary = () => {
 
     }
 
+//  let quantityError;
+
+//     const handleQuantity =event =>{
+//         const orderQuantity= event.target.quantity.value
+// console.log(orderQuantity)
+//         if( minOrder > orderQuantity ){
+
+//            return  quantityError = <p className='text-red-500'><small>Try to minimum quantity</small></p>
+//         }
+//         if(orderQuantity > quantity ){
+
+//            return  quantityError = <p className='text-red-500'><small>Out of Stock</small></p>
+//         }
+//         else{
+//             return orderQuantity;
+//         }
+//     }
 
     return (
         <div>
@@ -101,18 +117,19 @@ const ProductSumary = () => {
                             <div className="form-control ">
                                 <input type="text" name="phone" placeholder="phone" className=" border-2 input input-bordered   w-full "  />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Product-Name</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Product-Name</span>
                                 </label>
-                                <input type="text" name='name' value={name} class="input input-bordered"  readOnly/>
+                                <input type="text" name='name' value={name} className="input input-bordered"  readOnly/>
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Order-Quantity</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Order-Quantity</span>
                                 </label>
-                                <input type="text" name='quantity' placeholder="quantity" class="input input-bordered" />
+                                <input  type="text" name='quantity' placeholder="quantity" className="input input-bordered" />
                             </div>
+                            {/* {quantityError} */}
                             <input type="submit" className='btn btn-secondary w-full my-2' value='Submit' />
                         </form>
 

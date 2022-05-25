@@ -5,8 +5,8 @@ import auth from '../../firebase.init';
 
 const Dashboard = () => {
   const [user] = useAuthState(auth);
-  console.log(user)
-  const {photoURL} = user;
+
+console.log(user)
   
   return (
     <div className="drawer drawer-mobile">
@@ -26,7 +26,11 @@ const Dashboard = () => {
           {/* <!-- Sidebar content here --> */}
           <li className='bg-orange-200 rounded-lg'><Link to='/dashboard'>My Profile <div className="avatar online pl-8">
             <div className="w-11 rounded-full">
-              <img src={photoURL} alt='' />
+ 
+            <img src={
+              user?.photoURL || "https://api.lorem.space/image/face?hash=28212"
+            } alt='' />
+           
             </div>
           </div></Link></li>
 

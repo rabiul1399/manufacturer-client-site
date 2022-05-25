@@ -8,6 +8,7 @@ const Navbar = () => {
  const [user] = useAuthState(auth);
  const logout = () => {
   signOut(auth);
+  localStorage.removeItem("accessToken")
 };
     const menuItems = <>
     <li><Link to='/'>Home</Link></li>
@@ -40,8 +41,8 @@ const Navbar = () => {
           <a href='/' className="btn btn-ghost normal-case text-xl">Parts Gear</a>
         </div>
 
-        <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal mr-14 p-0">
+        <div className="navbar-center hidden lg:flex">
+    <ul className="menu menu-horizontal mr-14 p-0">
       <li><a>Blogs</a></li>
     
     </ul>

@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../hooks/useToken';
 import Loading from '../Shared/Loading';
 
 const SignUP = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [updateProfile, updating, updaeError] = useUpdateProfile(auth);
-  
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
     const [
         createUserWithEmailAndPassword,
         user,
@@ -17,21 +18,24 @@ const SignUP = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
 
-
-
     let signInError;
     const navigate = useNavigate();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
+    const [token] = useToken(user || gUser);
 
-    if (gUser || user) {
-        navigate(from, { replace: true });
-    }
+
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate]);
+    
     if (loading || gLoading || updating) {
         return <Loading></Loading>
     }
 
-    if (error || gError || updaeError) {
+    if (error || gError || updateError) {
         signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
     }
 
