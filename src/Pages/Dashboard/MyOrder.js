@@ -18,16 +18,6 @@ const MyOrder = () => {
     return <Loading></Loading>
 }
 
-  // useEffect(() => {
-  // if(user){
-  //   fetch(`http://localhost:5000/order?user=${user.email}`)
-  //   .then(res =>res.json())
-  //   .then(data => setOrders(data));
-
-  // }
-  // }, [user]);
-
-
 
   return (
     <div>
@@ -50,7 +40,18 @@ const MyOrder = () => {
             {
               orders.map((order,index) =><tr key={order._id}>
                   <th>{index + 1}</th>
-                  <td>{order.productName}</td>
+                  <td>
+                  <div class="flex items-center space-x-3">
+            <div class="avatar">
+              <div class="mask mask-squircle w-12 h-12">
+                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+              </div>
+            </div>
+            <div>
+              <div class="font-bold"> {order.productName}</div>
+            </div>
+          </div>
+           </td>
                   <th>{order.orderQuantity}</th>
                   <td>{order.price * order.orderQuantity}</td>                
                   <td>
@@ -58,11 +59,14 @@ const MyOrder = () => {
                   {(order.price && order.paid) && <span className='text-success btn btn-xs' >paid</span>}
                   </td>                  
                   <td>
+                   
                     {
-                     !order.paid ?
-                     <label for="my-modal-6"  onClick={()=>setCanceling(order)}   className='btn modal-button btn-warning btn-xs '>cancel</label>
-                     :
-                     <label for="my-modal-6"  onClick={()=>setCanceling(order)}   className='btn modal-button btn-warning btn-xs btn-disabled'>cancel</label>
+                      order.paid ?
+                      <label for="my-modal-6"   className='btn modal-button btn-disabled btn-warning btn-xs '>cancel</label>
+                      :
+                      <label for="my-modal-6"  onClick={()=>setCanceling(order)}   className='btn modal-button btn-warning btn-xs '>cancel</label>
+                  
+                    
                     }
                   
                   </td>

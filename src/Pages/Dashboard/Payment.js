@@ -24,14 +24,14 @@ const Payment = () => {
             return <Loading></Loading>
         }
         
-             const {orderQuantity,price,productName} = product;
+             const {orderQuantity, price,productName} = product;
     return (
         <div className=''>
 <h3>Product id:{id}</h3>
         <div className="card mx-auto  w-50 max-w-md bg-base-100 shadow-2xl my-14">
         <div className="card-body">
-          <p className="text-success font-bold">Hello, {orderQuantity}</p>
-          <h2 className="card-title">Please Pay for {productName}</h2>
+          <p className="text-success font-bold">Buy This Product, {productName}</p>
+          <h2 className="card-title"> {productName}</h2>
       
          <p>Please pay: ${price}</p>
         </div>

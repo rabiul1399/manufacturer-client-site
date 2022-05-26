@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const AllOrders = () => {
@@ -30,8 +31,8 @@ const AllOrders = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Name</th>
-              <th>Job</th>
+              <th>Product-Name</th>
+              <th>User-Name</th>
               <th>Favorite Color</th>
             
             </tr>
@@ -42,7 +43,10 @@ const AllOrders = () => {
                   <th>{index + 1}</th>
                   <td>{order.productName}</td>
                   <td>{order.userName}</td>
-                  <td>{order.user}</td>
+                  <td>
+                  {(order.price && !order.paid) && <Link to={`/dashboard/payment/${order._id}`}><button className='btn btn-primary btn-xs'>Unpaid</button></Link> }                  
+                  {(order.price && order.paid) && <span className='text-success btn btn-xs' >paid</span>}
+                  </td>
                  
                 </tr>
               )
