@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ const MyOrder = () => {
 
   const {data:orders,isLoading,refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?user=${user.email}`).then(res => res.json()))
 
-  
+
   if (isLoading) {
     return <Loading></Loading>
 }
@@ -21,7 +21,7 @@ const MyOrder = () => {
 
   return (
     <div>
-      <h2 className='text-center text-2xl my-3 text-blue-500'>This is Order : {orders.length}</h2>
+      <h2 className='text-center font-semibold text-2xl my-3 text-primary'>This is My Order</h2>
 
       <div className="overflow-x-auto">
         <table className="table w-full text-center">
@@ -44,7 +44,7 @@ const MyOrder = () => {
                   <div class="flex items-center space-x-3">
             <div class="avatar">
               <div class="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img src={order.img} alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
             <div>

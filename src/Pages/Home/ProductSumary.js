@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect,  useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -9,6 +9,7 @@ const ProductSumary = () => {
     const [user] = useAuthState(auth);
     const [product, setProduct] = useState({});
     const[orderQuantity,setOrderQuantity]=useState('');
+
 
     useEffect(() => {
         const url = `http://localhost:5000/product/${id}`;
@@ -31,11 +32,11 @@ const ProductSumary = () => {
 
  const handleQuantityError =() =>{
 
-      if(orderQuantity<minOrder){
+      if(orderQuantity < minOrder){
         toast.error(`Minimum Quantity Must Be ${minOrder}`)
  
     }
-    else if(orderQuantity>quantity){
+    else if(orderQuantity > quantity){
         toast.error(`Quantity can not be grater than ${quantity}`);
 
     }
@@ -71,8 +72,9 @@ const ProductSumary = () => {
         .then(data=>{   
                 if(data.success){
                 toast(`YOur Order is complete`)
-            }            
-         
+
+            } 
+                
         })       
 
     }
@@ -128,7 +130,7 @@ const ProductSumary = () => {
                             </div>   
                             <div className="form-control mb-8">
                                 <label className="label">
-                                    <span className="label-text">Order-Price</span>
+                                    <span className="label-text">Order-Price $USD</span>
                                 </label>
                                 <input   type="number" value={prices} className="input input-bordered" readOnly />                            
                                 
