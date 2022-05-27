@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import AllOrders from "./Pages/Dashboard/AllOrders";
 import AllUsers from "./Pages/Dashboard/AllUsers";
 import Payment from "./Pages/Dashboard/Payment";
+import AddProduct from "./Pages/Dashboard/AddProduct";
+import ManageProducts from "./Pages/Dashboard/ManageProducts";
 function App() {
   return (
     <div>
@@ -40,7 +42,9 @@ function App() {
         <Route path='review' element={<MyReview></MyReview>} ></Route>
         <Route path='payment/:id' element={<Payment></Payment>} ></Route>
         <Route path='allOrder' element={<AllOrders></AllOrders>} ></Route>
-        <Route path='allUsers' element={<AllUsers></AllUsers>} ></Route>
+        <Route path='allUsers' element={<AllUsers></AllUsers>} ></Route>       
+        <Route path='addProduct' element={<AddProduct></AddProduct>} ></Route>
+        <Route path='manageProducts' element={<ManageProducts></ManageProducts>} ></Route>
       
 
       </Route>
