@@ -7,7 +7,7 @@ const AllOrders = () => {
     // const navigate = useNavigate();
 
     useEffect(() => {
-          fetch('http://localhost:5000/allorder', {
+          fetch(' http://localhost:5000/allorder', {
             method: 'GET',
             headers: {
               'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -19,11 +19,11 @@ const AllOrders = () => {
       
       
         }, []);
-        console.log(allOrders)
+        
     return (
         <div>
 
-      <h2 className='text-center text-2xl my-3 text-blue-500'>This is Order : {allOrders.length}</h2>
+      <h2 className='text-center text-2xl my-3 text-blue-500'>This is all costumers Order : {allOrders.length}</h2>
 
       <div className="overflow-x-auto">
         <table className="table w-full">

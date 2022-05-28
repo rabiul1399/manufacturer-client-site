@@ -11,7 +11,7 @@ const stripePromise = loadStripe('pk_test_51L17q2A5SId8O3POFDjHQzwhRWWTnUoeBr4Wh
 const Payment = () => {
     const {id} = useParams();
 
-    const url = `http://localhost:5000/allorder/${id}`
+    const url = ` http://localhost:5000/allorder/${id}`
     const {data:product,isLoading} = useQuery(['order',id],() => fetch(url,
         {
             method:'GET',

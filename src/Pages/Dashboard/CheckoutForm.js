@@ -14,7 +14,7 @@ const CheckoutForm = ({product}) => {
     // const totalPrice =  (price *orderQuantity );
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch(' http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -83,7 +83,7 @@ const CheckoutForm = ({product}) => {
                 product: _id,
                 transactionId: paymentIntent.id
             }
-            fetch(`http://localhost:5000/allorder/${_id}`, {
+            fetch(` http://localhost:5000/allorder/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

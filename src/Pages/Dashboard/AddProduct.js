@@ -24,7 +24,7 @@ const AddProduct = () => {
 
          }
 
-         const url = `http://localhost:5000/product`;
+         const url = ` http://localhost:5000/product`;
          fetch(url, {
              method: 'POST',
              headers: {
@@ -55,7 +55,7 @@ const AddProduct = () => {
                     <input name='image' type='url' alt='' placeholder=' https://i.ibb.cch-7d-180.jpg' className="input mb-3 w-full max-w-xs" required />
 
                   
-                    <input type="Submit" value="Add a product" className="btn mt-3 w-full max-w-xs" required/>
+                    <input type="Submit" defaultValue="Add a product" className="btn mt-3 w-full max-w-xs" required/>
 
                 </form>
               </div>

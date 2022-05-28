@@ -16,6 +16,11 @@ import AllUsers from "./Pages/Dashboard/AllUsers";
 import Payment from "./Pages/Dashboard/Payment";
 import AddProduct from "./Pages/Dashboard/AddProduct";
 import ManageProducts from "./Pages/Dashboard/ManageProducts";
+import Blogs from "./Pages/Home/Blogs";
+import RequireAdmin from "./Pages/Form/RequireAdmin";
+import Portfolio from "./Pages/Home/Portfolio";
+import AllProducts from "./Pages/Home/AllProducts";
+
 function App() {
   return (
     <div>
@@ -24,6 +29,9 @@ function App() {
       <Routes>
         <Route path='' element={<Home />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/allproducts' element={<AllProducts />} />        
+        <Route path='/blogs' element={<Blogs />} />
+        <Route path='/portfolio' element={<Portfolio />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUP />} />
      
@@ -41,10 +49,26 @@ function App() {
         <Route path='order' element={<MyOrder></MyOrder>} ></Route>
         <Route path='review' element={<MyReview></MyReview>} ></Route>
         <Route path='payment/:id' element={<Payment></Payment>} ></Route>
-        <Route path='allOrder' element={<AllOrders></AllOrders>} ></Route>
-        <Route path='allUsers' element={<AllUsers></AllUsers>} ></Route>       
-        <Route path='addProduct' element={<AddProduct></AddProduct>} ></Route>
-        <Route path='manageProducts' element={<ManageProducts></ManageProducts>} ></Route>
+        <Route path='allOrder' element={
+          <RequireAdmin>
+            <AllOrders></AllOrders>
+          </RequireAdmin>
+        } ></Route>
+        <Route path='allUsers' element={
+          <RequireAdmin>
+            <AllUsers></AllUsers>
+          </RequireAdmin>
+        } ></Route>       
+        <Route path='addProduct' element={
+          <RequireAdmin>
+            <AddProduct></AddProduct>
+          </RequireAdmin>
+        } ></Route>
+        <Route path='manageProducts' element={
+          <RequireAdmin>
+            <ManageProducts></ManageProducts>
+          </RequireAdmin>
+        } ></Route>
       
 
       </Route>

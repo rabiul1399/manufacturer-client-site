@@ -1,8 +1,31 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 
-const ManageProduct = ({product}) => {
+const ManageProduct = ({product,refetch }) => {
     const {_id, name, price, description, img, quantity, minOrder } = product;
-    console.log(img)
+
+       
+    const handleDelete = () =>{
+        const proceed = window.confirm('Are you sure Deleted item?')       
+        if(proceed){
+            const url = ` http://localhost:5000/product/${_id}`;
+            fetch(url, {
+                method: 'DELETE',
+                headers: {
+                    'content-type': 'application/json'
+                }
+              })
+            .then(res=> res.json())
+            .then(result =>{
+               console.log(result);
+               toast("Successfully deleted one document.");
+             
+                 refetch();
+                
+            } )
+        }
+    }
+
     return (
         <div>
         <div className='justify-center'>
@@ -16,7 +39,7 @@ const ManageProduct = ({product}) => {
                     <p>Min. Order: {minOrder}</p>
 
                     <div className="card-actions justify-end">
-                        <button className='btn'>Delete</button>
+                        <button onClick={()=>handleDelete(_id)} className='btn'>Delete</button>
                     </div>
                 </div>
             </div>

@@ -5,11 +5,14 @@ import ManageProduct from './ManageProduct';
 
 const ManageProducts = () => {
  
-    const {data:products,isLoading ,refetch} = useQuery('users' , ()=> fetch('http://localhost:5000/product').then(res=>res.json()));
+    const {data:products,isLoading ,refetch} = useQuery('[products]' , ()=> fetch(' http://localhost:5000/product').then(res=>res.json()));
 
     if(isLoading){
         return <Loading></Loading>
     }
+
+ 
+
 
     return (
         <div>
@@ -17,7 +20,7 @@ const ManageProducts = () => {
 
             <div className='grid grid-cols-1  md:grid-cols-2 m-6  rounded-lg gap-6 '>
            {
-                products.map(product => <ManageProduct product={product} refetch={refetch} key={product._id}></ManageProduct>)
+                products.map(product => <ManageProduct product={product}  refetch={refetch} key={product._id}></ManageProduct>)
             }
 
            </div>

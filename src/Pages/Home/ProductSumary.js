@@ -12,7 +12,7 @@ const ProductSumary = () => {
 
 
     useEffect(() => {
-        const url = `http://localhost:5000/product/${id}`;
+        const url = ` http://localhost:5000/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -61,7 +61,7 @@ const ProductSumary = () => {
 
         }  
         console.log(price)
-        fetch('http://localhost:5000/order',{
+        fetch(' http://localhost:5000/order',{
             method:'POST',
             headers:{
                 'content-type': 'application/json'

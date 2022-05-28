@@ -4,36 +4,36 @@ import Loading from '../Shared/Loading';
 import UserRow from './UserRow';
 
 const AllUsers = () => {
-    const {data:users,isLoading ,refetch} = useQuery('users' , ()=> fetch('http://localhost:5000/user').then(res=>res.json()))
-    if(isLoading){
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch(' http://localhost:5000/user').then(res => res.json()))
+    if (isLoading) {
         return <Loading></Loading>
     }
 
     return (
         <div>
-        <h3>This is all Users: {users.length}</h3>
+            <h3>This is all Users: {users.length}</h3>
 
 
-        <div className="overflow-x-auto">
-<table className="table w-full">
-<thead>
-  <tr>
-    <th>index</th>
-    <th>Email</th>
-    <th>Make Admin</th>
-    <th>Favorite Color</th>
-  </tr>
-</thead>
-<tbody>
-    {
-        users.map((user,index) =><UserRow user={user} index={index} key={user._id} refetch={refetch}></UserRow>)
-    }
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th>index</th>
+                            <th>Email</th>
+                            <th>Make Admin</th>
+                            <th>Delete Admin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            users.map((user, index) => <UserRow user={user} index={index} key={user._id} refetch={refetch}></UserRow>)
+                        }
 
- 
-</tbody>
-</table>
-</div>
-    </div>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 };
 

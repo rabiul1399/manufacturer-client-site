@@ -11,7 +11,7 @@ const MyOrder = () => {
   const [cancelOrder,setCanceling] = useState(null)
   const [user] = useAuthState(auth);
 
-  const {data:orders,isLoading,refetch } = useQuery('orders', () => fetch(`http://localhost:5000/order?user=${user.email}`).then(res => res.json()))
+  const {data:orders,isLoading,refetch } = useQuery('orders', () => fetch(` http://localhost:5000/order?user=${user.email}`).then(res => res.json()))
 
 
   if (isLoading) {
