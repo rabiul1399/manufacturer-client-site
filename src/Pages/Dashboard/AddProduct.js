@@ -24,7 +24,7 @@ const AddProduct = () => {
 
          }
 
-         const url = ` http://localhost:5000/product`;
+         const url = `  https://warm-sea-73005.herokuapp.com/product`;
          fetch(url, {
              method: 'POST',
              headers: {

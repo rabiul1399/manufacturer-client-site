@@ -20,6 +20,7 @@ import Blogs from "./Pages/Home/Blogs";
 import RequireAdmin from "./Pages/Form/RequireAdmin";
 import Portfolio from "./Pages/Home/Portfolio";
 import AllProducts from "./Pages/Home/AllProducts";
+import NotFound from "./Pages/Home/NotFound";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
       
 
       </Route>
+      <Route path='*' element={<NotFound></NotFound>}></Route>
      
       </Routes>
      

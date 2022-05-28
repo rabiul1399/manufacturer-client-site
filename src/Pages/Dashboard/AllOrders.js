@@ -7,7 +7,7 @@ const AllOrders = () => {
     // const navigate = useNavigate();
 
     useEffect(() => {
-          fetch(' http://localhost:5000/allorder', {
+          fetch('  https://warm-sea-73005.herokuapp.com/allorder', {
             method: 'GET',
             headers: {
               'authorization': `Bearer ${localStorage.getItem('accessToken')}`

@@ -6,7 +6,7 @@ const CancelOrder = ({ cancelOrder, setCanceling, refetch }) => {
     console.log(cancelOrder)
 
     const deletingOrder = () => {
-        fetch(` http://localhost:5000/order/${cancelOrder._id}`, {
+        fetch(`  https://warm-sea-73005.herokuapp.com/order/${cancelOrder._id}`, {
             method: 'DELETE',
             headers: {
 
