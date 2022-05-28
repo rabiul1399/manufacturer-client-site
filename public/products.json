@@ -15,7 +15,7 @@
         "description": "In Spring one general sense, philosophy is associated with wisdom, intellectual culture and a search for knowledge.",
         "img": "https://i.ibb.co/3mnX9gh/car-parts-1-10.jpg",
         "quantity":"950",
-        "minOrder" :"100" 
+        "minOrder" :"950" 
     },
     
     {
@@ -25,7 +25,7 @@
         "description": "Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated",
         "img": "https://i.ibb.co/stdpLh6/clutch-g896bd7fdd-1280.jpg",
         "quantity":"550",
-        "minOrder" :"60" 
+        "minOrder" :"550" 
     },
     {
         "id": 4,

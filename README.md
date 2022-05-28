@@ -1,6 +1,6 @@
 # website name: Parts Gear
 
-## Live website Link: 
+## Live website Link: https://car-parts-asigenment-12.web.app
 
 ## Client side code github Repository Link: https://github.com/programming-hero-web-course1/manufacturer-website-client-side-rabiul1399
 
@@ -21,4 +21,4 @@
 ◉ MongoDb
 ◉ Express js
 ◉ React Form Hooks 
-◉ daisyiUI 
+◉ Tailwind css 

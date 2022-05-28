@@ -34,14 +34,14 @@ const Dashboard = () => {
               :
               <div className="avatar pl-8 online placeholder">
                 <div className="bg-neutral-focus text-neutral-content rounded-full w-11">
-                  <span className="text-lg">{user.displayName.slice(0, 4)}</span>
+                  <span className="text-lg">{user.displayName.slice(0, 2)}</span>
                 </div>
               </div>
             }
 
           </Link></li>
           {
-            !admin && user && <>
+            !admin &&  <>
               <li><Link to='/dashboard/order'>My Orders</Link></li>
               <li><Link to='/dashboard/review'>My Review</Link></li>
 

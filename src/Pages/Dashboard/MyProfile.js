@@ -31,8 +31,8 @@ const {education,location,number,linkdin,github,} = update;
     }
 
     return (
-        <div className='h-full bg-base-200 grid grid-cols-2'>
-            <div className='ml-16 mt-8 '>
+        <div className=' bg-base-200 grid grid-cols-1 lg:grid-cols-2'>
+            <div className='mx-auto mt-8 '>
                 {user.photoURL ?
                     <div className="avatar online pl-8">
                         <div className="w-32 rounded-full">
@@ -42,7 +42,7 @@ const {education,location,number,linkdin,github,} = update;
                     :
                     <div className="avatar online placeholder">
                         <div className="bg-neutral-focus text-neutral-content rounded-full w-32">
-                            <span className="text-xl">{user.displayName.slice(0, 4)}</span>
+                            <span className="text-xl">{user.displayName.slice(0, 6)}</span>
                         </div>
                     </div>
                 }
@@ -57,7 +57,7 @@ const {education,location,number,linkdin,github,} = update;
                 </div>
             </div>
 
-            <div className='  mt-8'>
+            <div className=' mx-auto mt-8'>
                 <h2 className='text-3xl font-semibold mb-3'>Update your Profile</h2>
                 <form onSubmit={profileSubmit} className='form-control'>
                     <input type="text" value={displayName} className="input w-full mb-2 max-w-xs" readOnly />

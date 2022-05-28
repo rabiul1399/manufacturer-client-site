@@ -23,7 +23,7 @@ const MyOrder = () => {
     <div>
       <h2 className='text-center font-semibold text-2xl my-3 text-primary'>This is My Order</h2>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto w-screen lg:w-full">
         <table className="table w-full text-center">
 
           <thead>

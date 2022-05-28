@@ -30,18 +30,18 @@ const ProductSumary = () => {
 
       
 
- const handleQuantityError =() =>{
+//  const handleQuantityError =() =>{
 
-      if(orderQuantity < minOrder){
-        toast.error(`Minimum Quantity Must Be ${minOrder}`)
+//       if(orderQuantity < minOrder){
+//         toast.error(`Minimum Quantity Must Be ${minOrder}`)
  
-    }
-    else if(orderQuantity > quantity){
-        toast.error(`Quantity can not be grater than ${quantity}`);
+//     }
+//     else if(orderQuantity > quantity){
+//         toast.error(`Quantity can not be grater than ${quantity}`);
 
-    }
+//     }
 
-}
+// }
 
 
 
@@ -136,7 +136,7 @@ const ProductSumary = () => {
                                 
                             </div> 
 
-                            <input onClick={handleQuantityError} type="submit" className='btn btn-secondary w-full my-2' value='Submit' required />
+                            <input type="submit" className='btn btn-secondary w-full my-2' value='Submit' required />
                         </form>
 
                     </div>

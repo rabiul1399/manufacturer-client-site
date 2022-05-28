@@ -20,16 +20,11 @@ const SignUP = () => {
 
     let signInError;
     const navigate = useNavigate();
-    const location = useLocation();
-    let from = location.state?.from?.pathname || "/";
     const [token] = useToken(user || gUser);
 
 
-    useEffect(() => {
-        if (token) {
-            navigate(from, { replace: true });
-        }
-    }, [token, from, navigate]);
+
+  
     
     if (loading || gLoading || updating) {
         return <Loading></Loading>
@@ -37,6 +32,9 @@ const SignUP = () => {
 
     if (error || gError || updateError) {
         signInError = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+    }
+    if (token) {
+        navigate('/home')
     }
 
     const onSubmit = async data => {
