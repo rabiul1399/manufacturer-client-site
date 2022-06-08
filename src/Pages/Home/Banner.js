@@ -9,7 +9,7 @@ const Banner = () => {
                     <img src='https://i.ibb.co/P1mvSm1/joey-banks-YApi-Wyp0lqo-unsplash.jpg' className="lg:max-w-lg rounded-lg shadow-2xl" alt=''/>
                     <div className='ml-11'>
                         <h1 className="text-4xl font-bold">Brake Kit</h1>
-                        <p className="py-6">Many philosophical debates that began in ancient times are still debated today. In one general sense, philosophy is associated with wisdom.</p>
+                        <p className="py-6">Many philosophical debates that began in ancient <span className='text-red-500 bg-yellow-500'>times are still debated today</span>. In one general sense, philosophy is associated with wisdom.</p>
                       <MainButton>Get Started</MainButton>
                     </div>
                 </div>

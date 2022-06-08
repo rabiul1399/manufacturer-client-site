@@ -20,11 +20,7 @@ const SignUP = () => {
 
     let signInError;
     const navigate = useNavigate();
-    const [token] = useToken(user || gUser);
-
-
-
-  
+    const [token] = useToken(user || gUser);  
     
     if (loading || gLoading || updating) {
         return <Loading></Loading>
