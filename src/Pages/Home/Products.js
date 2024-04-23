@@ -6,7 +6,7 @@ import Product from './Product';
 
 const Products = () => {
     const [parts] = useProducts([]);
-   
+   //new products
     return (
         <div>
            <div className='flex justify-between  items-center m-2'>
