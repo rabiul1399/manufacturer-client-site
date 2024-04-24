@@ -8,7 +8,7 @@ const ManageProduct = ({product,refetch }) => {
     const handleDelete = () =>{
         const proceed = window.confirm('Are you sure Deleted item?')       
         if(proceed){
-            const url = `  https://warm-sea-73005.herokuapp.com/product/${_id}`;
+            const url = `  http://localhost:5000/product/${_id}`;
             fetch(url, {
                 method: 'DELETE',
                 headers: {

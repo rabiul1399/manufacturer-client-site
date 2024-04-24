@@ -12,7 +12,7 @@ const ProductSumary = () => {
 
 
     useEffect(() => {
-        const url = `  https://warm-sea-73005.herokuapp.com/product/${id}`;
+        const url = `  http://localhost:5000/product/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
@@ -61,7 +61,7 @@ const ProductSumary = () => {
 
         }  
         console.log(price)
-        fetch('  https://warm-sea-73005.herokuapp.com/order',{
+        fetch('  http://localhost:5000/order',{
             method:'POST',
             headers:{
                 'content-type': 'application/json'

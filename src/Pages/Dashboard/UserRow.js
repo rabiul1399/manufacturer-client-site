@@ -5,7 +5,7 @@ const UserRow = ({ user, refetch, index }) => {
     const { email, role } = user;
 
     const makeAdmin = () => {
-        fetch(`  https://warm-sea-73005.herokuapp.com/user/admin/${email}`, {
+        fetch(`  http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -22,7 +22,7 @@ const UserRow = ({ user, refetch, index }) => {
     }
 
     const removeAdmin = () => {
-        fetch(`  https://warm-sea-73005.herokuapp.com/user/${role}`, {
+        fetch(`  http://localhost:5000/user/${role}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
